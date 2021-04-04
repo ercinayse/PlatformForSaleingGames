@@ -9,7 +9,7 @@ namespace PlatformSalingGames.Concrete
     {
         public bool CheckCampaingForGamer(Gamer gamer)
         {
-           if(gamer.Birthyear>=1997)
+           if(gamer.Birthyear>=1996)
             {
                 return true;
             }
@@ -17,6 +17,7 @@ namespace PlatformSalingGames.Concrete
             {
                 return false;
             }
+           
         }
     }
 }

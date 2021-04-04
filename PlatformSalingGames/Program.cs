@@ -1,4 +1,5 @@
-﻿using PlatformSalingGames.Abstract;
+﻿using PlatformForSaleingGames.Adapter;
+using PlatformSalingGames.Abstract;
 using PlatformSalingGames.Concrete;
 using PlatformSalingGames.Entities;
 using System;
@@ -11,7 +12,9 @@ namespace PlatformSalingGames
         {
             Gamer gamer = new Gamer
             {
-                TCKN = "51364468957",
+                TCKN = 12345678910,
+                Name="Ayşe",
+                Surname="Erçin",
                 Birthyear = 1997
             };
             Campaing campaing = new Campaing{
@@ -26,13 +29,15 @@ namespace PlatformSalingGames
                 ReleaseYear = 2021
             };
 
-            GamerManager gamerManager = new GamerManager(new GamerCheckManager());
+            GamerManager gamerManager = new GamerManager(new ValidationWithMernis());
             gamerManager.Register(gamer);
 
             CampaingManager campaingManager = new CampaingManager();
             campaingManager.Add(campaing);
             OrderManager orderManager = new OrderManager(new CampaingCheckManager());
             orderManager.Order(gamer, game, campaing);
+
+            Console.ReadKey();
            
         }
     }
